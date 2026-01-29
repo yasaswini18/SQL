@@ -1,0 +1,408 @@
+SQL> select *
+  2  from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> --Write a query to display job of employees
+SQL> select job
+  2  from emp;
+
+JOB                                                                                                 
+---------                                                                                           
+CLERK                                                                                               
+SALESMAN                                                                                            
+SALESMAN                                                                                            
+MANAGER                                                                                             
+SALESMAN                                                                                            
+MANAGER                                                                                             
+MANAGER                                                                                             
+ANALYST                                                                                             
+PRESIDENT                                                                                           
+SALESMAN                                                                                            
+CLERK                                                                                               
+CLERK                                                                                               
+ANALYST                                                                                             
+CLERK                                                                                               
+
+14 rows selected.
+
+SQL> --write a query to display name,job and sal of employees
+SQL> select ename,job,sal
+  2  from emp;
+
+ENAME      JOB              SAL                                                                     
+---------- --------- ----------                                                                     
+SMITH      CLERK            800                                                                     
+ALLEN      SALESMAN        1600                                                                     
+WARD       SALESMAN        1250                                                                     
+JONES      MANAGER         2975                                                                     
+MARTIN     SALESMAN        1250                                                                     
+BLAKE      MANAGER         2850                                                                     
+CLARK      MANAGER         2450                                                                     
+SCOTT      ANALYST         3000                                                                     
+KING       PRESIDENT       5000                                                                     
+TURNER     SALESMAN        1500                                                                     
+ADAMS      CLERK           1100                                                                     
+JAMES      CLERK            950                                                                     
+FORD       ANALYST         3000                                                                     
+MILLER     CLERK           1300                                                                     
+
+14 rows selected.
+
+SQL> --write a query to display annual income of employees
+SQL> select ename,sal*12
+  2  from emp;
+
+ENAME          SAL*12                                                                               
+---------- ----------                                                                               
+SMITH            9600                                                                               
+ALLEN           19200                                                                               
+WARD            15000                                                                               
+JONES           35700                                                                               
+MARTIN          15000                                                                               
+BLAKE           34200                                                                               
+CLARK           29400                                                                               
+SCOTT           36000                                                                               
+KING            60000                                                                               
+TURNER          18000                                                                               
+ADAMS           13200                                                                               
+JAMES           11400                                                                               
+FORD            36000                                                                               
+MILLER          15600                                                                               
+
+14 rows selected.
+
+SQL> select ename,sal*12 as annualSalary
+  2  from emp;
+
+ENAME      ANNUALSALARY                                                                             
+---------- ------------                                                                             
+SMITH              9600                                                                             
+ALLEN             19200                                                                             
+WARD              15000                                                                             
+JONES             35700                                                                             
+MARTIN            15000                                                                             
+BLAKE             34200                                                                             
+CLARK             29400                                                                             
+SCOTT             36000                                                                             
+KING              60000                                                                             
+TURNER            18000                                                                             
+ADAMS             13200                                                                             
+JAMES             11400                                                                             
+FORD              36000                                                                             
+MILLER            15600                                                                             
+
+14 rows selected.
+
+SQL> --Write a query to display hiredate annual salary and half term salary of the employees,
+SQL> select hiredate,sal*12 as AnnualSalary,sal*6 as HalfTermSalary
+  2  from emp;
+
+HIREDATE  ANNUALSALARY HALFTERMSALARY                                                               
+--------- ------------ --------------                                                               
+17-DEC-80         9600           4800                                                               
+20-FEB-81        19200           9600                                                               
+22-FEB-81        15000           7500                                                               
+02-APR-81        35700          17850                                                               
+28-SEP-81        15000           7500                                                               
+01-MAY-81        34200          17100                                                               
+09-JUN-81        29400          14700                                                               
+19-APR-87        36000          18000                                                               
+17-NOV-81        60000          30000                                                               
+08-SEP-81        18000           9000                                                               
+23-MAY-87        13200           6600                                                               
+03-DEC-81        11400           5700                                                               
+03-DEC-81        36000          18000                                                               
+23-JAN-82        15600           7800                                                               
+
+14 rows selected.
+
+SQL> --Write a query to display salary,salary with 10% increment, annual salary of all employees.
+SQL> select sal,sal+sal*10/100 as incrementedsalary,sal*12 as annualsalary
+  2  from emp;
+
+       SAL INCREMENTEDSALARY ANNUALSALARY                                                           
+---------- ----------------- ------------                                                           
+       800               880         9600                                                           
+      1600              1760        19200                                                           
+      1250              1375        15000                                                           
+      2975            3272.5        35700                                                           
+      1250              1375        15000                                                           
+      2850              3135        34200                                                           
+      2450              2695        29400                                                           
+      3000              3300        36000                                                           
+      5000              5500        60000                                                           
+      1500              1650        18000                                                           
+      1100              1210        13200                                                           
+       950              1045        11400                                                           
+      3000              3300        36000                                                           
+      1300              1430        15600                                                           
+
+14 rows selected.
+
+SQL> --Write a query to display 30% decrement in salary and half_term salary of employees
+SQL> select sal*0.7 as Decrementedsalary,sal*6 as halftermsalary
+  2  from emp;
+
+DECREMENTEDSALARY HALFTERMSALARY                                                                    
+----------------- --------------                                                                    
+              560           4800                                                                    
+             1120           9600                                                                    
+              875           7500                                                                    
+           2082.5          17850                                                                    
+              875           7500                                                                    
+             1995          17100                                                                    
+             1715          14700                                                                    
+             2100          18000                                                                    
+             3500          30000                                                                    
+             1050           9000                                                                    
+              770           6600                                                                    
+              665           5700                                                                    
+             2100          18000                                                                    
+              910           7800                                                                    
+
+14 rows selected.
+
+SQL> select sal>5700 as salgreaterthan5700
+  2  from emp;
+select sal>5700 as salgreaterthan5700
+          *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> --the error above is because in oracle there i no boolean type and sal>5700 returns true/false instead we can use CASE or DECODE.
+SQL> --Write a query to display name,annual salary and salary with 30% increment of employees
+SQL> select ename as name,sal salary,sal*1.3 'INCR_Salary'
+  2  from emp;
+select ename as name,sal salary,sal*1.3 'INCR_Salary'
+                                        *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select ename as name, sal salary,sal*1.3 "incr_salary"
+  2  from emp;
+
+NAME           SALARY incr_salary                                                                   
+---------- ---------- -----------                                                                   
+SMITH             800        1040                                                                   
+ALLEN            1600        2080                                                                   
+WARD             1250        1625                                                                   
+JONES            2975      3867.5                                                                   
+MARTIN           1250        1625                                                                   
+BLAKE            2850        3705                                                                   
+CLARK            2450        3185                                                                   
+SCOTT            3000        3900                                                                   
+KING             5000        6500                                                                   
+TURNER           1500        1950                                                                   
+ADAMS            1100        1430                                                                   
+JAMES             950        1235                                                                   
+FORD             3000        3900                                                                   
+MILLER           1300        1690                                                                   
+
+14 rows selected.
+
+SQL> select ename as name,sal*12 annual_salary,sal*1.3 "INCR_SALARY"
+  2  from emp;
+
+NAME       ANNUAL_SALARY INCR_SALARY                                                                
+---------- ------------- -----------                                                                
+SMITH               9600        1040                                                                
+ALLEN              19200        2080                                                                
+WARD               15000        1625                                                                
+JONES              35700      3867.5                                                                
+MARTIN             15000        1625                                                                
+BLAKE              34200        3705                                                                
+CLARK              29400        3185                                                                
+SCOTT              36000        3900                                                                
+KING               60000        6500                                                                
+TURNER             18000        1950                                                                
+ADAMS              13200        1430                                                                
+JAMES              11400        1235                                                                
+FORD               36000        3900                                                                
+MILLER             15600        1690                                                                
+
+14 rows selected.
+
+SQL> select sal,job
+  2  from emp;
+
+       SAL JOB                                                                                      
+---------- ---------                                                                                
+       800 CLERK                                                                                    
+      1600 SALESMAN                                                                                 
+      1250 SALESMAN                                                                                 
+      2975 MANAGER                                                                                  
+      1250 SALESMAN                                                                                 
+      2850 MANAGER                                                                                  
+      2450 MANAGER                                                                                  
+      3000 ANALYST                                                                                  
+      5000 PRESIDENT                                                                                
+      1500 SALESMAN                                                                                 
+      1100 CLERK                                                                                    
+       950 CLERK                                                                                    
+      3000 ANALYST                                                                                  
+      1300 CLERK                                                                                    
+
+14 rows selected.
+
+SQL> select distinct sal
+  2  from emp;
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+      1250                                                                                          
+      2850                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+      1600                                                                                          
+      1500                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> --To remove multiple columns we pass 2 or more columns and remove in combination
+SQL> select distinct sal,job
+  2  from emp;
+
+       SAL JOB                                                                                      
+---------- ---------                                                                                
+       800 CLERK                                                                                    
+      2850 MANAGER                                                                                  
+      1500 SALESMAN                                                                                 
+      2975 MANAGER                                                                                  
+      2450 MANAGER                                                                                  
+      1300 CLERK                                                                                    
+      1250 SALESMAN                                                                                 
+      1100 CLERK                                                                                    
+      3000 ANALYST                                                                                  
+       950 CLERK                                                                                    
+      1600 SALESMAN                                                                                 
+      5000 PRESIDENT                                                                                
+
+12 rows selected.
+
+SQL> uh
+SP2-0042: unknown command "uh" - rest of line ignored.
+SQL> 
+SQL> --Write a query to display name an annual salary of allen from emp table
+SQL> select ename as name,sal*12 as annual_salary
+  2  from emp
+  3  where ename=allen;
+where ename=allen
+            *
+ERROR at line 3:
+ORA-00904: "ALLEN": invalid identifier 
+
+
+SQL> select ename from emp;
+
+ENAME                                                                                               
+----------                                                                                          
+SMITH                                                                                               
+ALLEN                                                                                               
+WARD                                                                                                
+JONES                                                                                               
+MARTIN                                                                                              
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+TURNER                                                                                              
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+MILLER                                                                                              
+
+14 rows selected.
+
+SQL> select ename as name,sal*12 as annual_income
+  2  from emp
+  3  where ename='ALLEN';
+
+NAME       ANNUAL_INCOME                                                                            
+---------- -------------                                                                            
+ALLEN              19200                                                                            
+
+SQL> select ename,sal*12 as annual_income
+  2  from emp
+  3  where ename="ALLEN";
+where ename="ALLEN"
+            *
+ERROR at line 3:
+ORA-00904: "ALLEN": invalid identifier 
+
+
+SQL> --above error is because we cannot use double codes in oracle but can be used in mysql
+SQL> --Write a query to display details of employees along with their halfterm annual income if annual income is greater than 8000.
+SQL> select empno,ename,job,mgr,hiredate,sal,comm,deptno,sal*6 as half_term_sal
+  2  from emp
+  3  where sal*12>8000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO HALF_TERM_SAL 
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ------------- 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20          4800 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30          9600 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30          7500 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         17850 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30          7500 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         17100 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         14700 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         18000 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         30000 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30          9000 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20          6600 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30          5700 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         18000 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10          7800 
+
+14 rows selected.
+
+SQL> select emp.*,sal*12 half_term_sal
+  2  from emp
+  3  where sal*12>8000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO HALF_TERM_SAL 
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ------------- 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20          9600 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         19200 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         15000 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         35700 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         15000 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         34200 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         29400 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         36000 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         60000 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         18000 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         13200 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         11400 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         36000 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         15600 
+
+14 rows selected.
+
+SQL> --emp.* works in oracle and *,sal works in mysql
+SQL> spool off;
